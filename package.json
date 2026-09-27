@@ -1,0 +1,27 @@
+{
+  "name": "school-helping-ai",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon backend/src/server.js",
+    "start": "node backend/src/server.js",
+    "test:assistant": "node --test backend/test/assistant-context.test.js",
+    "test": "node --test backend/test/*.test.js"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "^1.9.1",
+    "@supabase/supabase-js": "^2.117.2",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "express-rate-limit": "^7.5.0",
+    "firebase": "^12.19.0",
+    "firebase-admin": "^13.6.0",
+    "helmet": "^8.1.0",
+    "pdf-parse": "^2.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

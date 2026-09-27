@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr"><head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="description" content="Goal AI de School Helping AI"><title>Goal AI — School Helping AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="assistant.css"><link rel="stylesheet" href="goal.css">
+  <script src="api-config.js"></script>
+</head><body class="assistant-page goal-page">
+<div class="noise"></div>
+<header class="assistant-header"><a class="brand" href="index.html" aria-label="Retour à l'accueil"><span class="brand-mark"><i></i><i></i><i></i></span><span>School Helping <b>AI</b></span></a><div class="workspace-title"><span class="bot-logo">◎</span><div><b>Goal AI</b><small><i></i> Ton parcours personnel</small></div></div><div class="header-actions"><a href="index.html" class="back-home">← <span>Accueil</span></a><button class="logout-button" id="logoutButton" type="button">Déconnexion</button></div></header>
+<main class="chat-layout"><aside class="chat-sidebar">
+  <div class="student-card"><span class="student-avatar">--</span><div><b>Élève</b><small>Chargement du profil…</small></div></div>
+  <button class="new-conversation" id="newChat" type="button">＋ Nouvelle discussion</button><div class="side-label">ESPACES IA</div>
+  <a class="space muted" href="assistant.html"><span>✦</span><div><b>Assistant AI</b><small>Ton soutien de cours</small></div></a>
+  <a class="space active" href="goal.html"><span>◎</span><div><b>Goal AI</b><small>Ton plan d'apprentissage</small></div></a>
+  <button class="edit-goal" id="editGoal" type="button" hidden>⚙ Modifier mon objectif</button>
+  <button class="delete-goal" id="deleteGoal" type="button" hidden>🗑 Supprimer mon objectif</button><div class="side-label recent-label">RÉCENT</div>
+  <p class="sidebar-note"><span>◎</span> Tes discussions s’appuient sur l’objectif que tu as choisi.</p>
+</aside><section class="chat-main" aria-label="Conversation Goal AI">
+  <section class="goal-dashboard" id="goalDashboard" aria-label="Programme et progression" hidden>
+    <div class="goal-dashboard-head"><div class="goal-dashboard-title"><span class="goal-kicker">TON PLAN DE PROGRESSION</span><h2>Avance vers ton objectif</h2></div><div class="goal-dashboard-actions"><button class="reach-goal" id="reachGoal" type="button">🎯 Atteindre mon objectif</button><button class="goal-panel-toggle" id="toggleGoalPlan" type="button" aria-controls="goalDashboardDetails" aria-expanded="false">Voir les tâches</button></div></div>
+    <div class="goal-progress-grid">
+      <article class="progress-card"><div><b>🏆 Global</b><strong id="overallPercent">0%</strong></div><div class="progress-track" role="progressbar" aria-label="Progression globale" aria-valuemin="0" aria-valuemax="100"><span id="overallBar"></span></div><small id="overallCount">0 / 0 tâches terminées</small></article>
+      <article class="progress-card"><div><b>📆 Semaine</b><strong id="weeklyPercent">0%</strong></div><p id="weeklyObjective">Aucun objectif hebdomadaire</p><div class="progress-track" role="progressbar" aria-label="Progression hebdomadaire" aria-valuemin="0" aria-valuemax="100"><span id="weeklyBar"></span></div><small id="weeklyCount">0 / 0 tâches terminées</small></article>
+      <article class="progress-card"><div><b>📅 Jour</b><strong id="dailyPercent">0%</strong></div><p id="dailyObjective">Aucune tâche en cours</p><div class="progress-track" role="progressbar" aria-label="Progression quotidienne" aria-valuemin="0" aria-valuemax="100"><span id="dailyBar"></span></div><small id="dailyCount">0 / 0 tâches terminées</small></article>
+    </div>
+    <div class="goal-dashboard-details" id="goalDashboardDetails" hidden>
+      <div class="goal-task-plan" id="goalTaskPlan"></div>
+      <div class="goal-help-actions" aria-label="Aide de Goal AI">
+        <button type="button" data-help="explain">📚 M’expliquer</button><button type="button" data-help="exercise">✏️ Me donner un exercice</button><button type="button" data-help="revise">🧠 Réviser avec moi</button><button type="button" data-help="quiz">🧪 Me tester</button><button type="button" data-help="help">💡 J’ai besoin d’aide</button>
+      </div>
+    </div>
+  </section>
+  <div class="messages" id="messages" aria-live="polite"><section class="welcome-state" id="welcome"><div class="welcome-star">◎</div><div class="eyebrow">Ton objectif est prêt</div><h1>Avançons vers<br><em>ta réussite.</em></h1><p id="welcomeText">Goal AI transforme ton objectif en prochaines étapes concrètes.</p></section></div>
+  <div class="composer-zone"><div class="composer-wrap"><textarea id="messageInput" rows="1" placeholder="Parle de ton objectif à Goal AI…" aria-label="Ton message"></textarea><button class="send-btn" id="sendBtn" disabled aria-label="Envoyer le message">↑</button></div><p class="composer-hint">↵ pour envoyer <span>·</span> ⇧ ↵ pour aller à la ligne</p></div>
+</section></main>
+<div class="goal-modal" id="goalModal" role="dialog" aria-modal="true" aria-labelledby="goalTitle" hidden><section class="goal-form-card"><button class="close-goal" id="closeGoal" type="button" aria-label="Fermer">×</button><div class="welcome-star">◎</div><div class="eyebrow">GOAL AI</div><h1 id="goalTitle">Définissons ton objectif</h1><p>Quelques informations pour créer un parcours adapté à ton objectif.</p><p class="goal-error" id="goalError" role="alert" hidden></p><form id="goalForm" novalidate><div class="goal-section"><label>Type</label><div class="choice-grid" id="typeChoices"><button type="button" data-type="exam">Examen</button><button type="button" data-type="language">Langue</button><button type="button" data-type="programming">Langage de programmation</button></div></div><div id="goalFields"></div><button class="goal-submit" id="saveGoal" type="submit" disabled>Créer mon objectif <span>→</span></button></form></section></div>
+<script type="module" src="goal.js"></script>
+</body></html>

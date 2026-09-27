@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import { completeTask, deleteGoal, generateGoal, getGoal, goalChat, updateGoal } from '../controllers/goal.controller.js';
+import { authMiddleware } from '../middleware/authMiddleware.js';
+const router = Router();
+router.get('/current', authMiddleware, getGoal);
+router.delete('/current', authMiddleware, deleteGoal);
+router.put('/current', authMiddleware, updateGoal);
+router.post('/generate', authMiddleware, generateGoal);
+router.post('/chat', authMiddleware, goalChat);
+router.patch('/tasks/:taskId', authMiddleware, completeTask);
+export default router;

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="description" content="Assistant AI de School Helping AI">
+  <title>Assistant AI — School Helping AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="assistant.css">
+  <script src="api-config.js"></script>
+</head>
+<body class="assistant-page">
+<div class="noise"></div>
+<header class="assistant-header">
+  <a class="brand" href="index.html" aria-label="Retour à l'accueil"><span class="brand-mark"><i></i><i></i><i></i></span><span>School Helping <b>AI</b></span></a>
+  <div class="workspace-title"><span class="bot-logo">✦</span><div><b>Assistant AI</b><small><i></i> Prêt à t'aider</small></div></div>
+  <div class="header-actions">
+    <a href="index.html" class="back-home">← <span>Accueil</span></a>
+    <button class="logout-button" id="logoutButton" type="button">Déconnexion</button>
+  </div>
+</header>
+<main class="chat-layout">
+  <aside class="chat-sidebar">
+    <div class="student-card"><span class="student-avatar">--</span><div><b>Élève</b><small>Chargement du profil…</small></div><button aria-label="Options du profil">•••</button></div>
+    <button class="new-conversation" id="newChat">＋ Nouvelle discussion</button>
+    <div class="side-label">ESPACES IA</div>
+    <a class="space active" href="assistant.html"><span>✦</span><div><b>Assistant AI</b><small>Ton soutien de cours</small></div></a>
+    <a class="space muted" href="goal.html"><span>◎</span><div><b>Goal AI</b><small>Ton plan d'apprentissage</small></div></a>
+    <div class="side-label recent-label">RÉCENT</div>
+    <p class="sidebar-note"><span>✦</span> Les réponses utilisent le contexte que tu choisis de partager.</p>
+  </aside>
+  <section class="chat-main" aria-label="Conversation Assistant AI">
+    <div class="chat-top"><div><div class="mobile-space"><span>✦</span> Assistant AI</div><p>Ton espace d'apprentissage personnel</p></div><button class="context-button" aria-label="Voir le contexte actif"><span>◎</span><b>Contexte</b><em>0</em></button></div>
+    <div class="messages" id="messages" aria-live="polite">
+      <section class="welcome-state" id="welcome"><div class="welcome-star">✦</div><div class="eyebrow">Bienvenue</div><h1>Comment puis-je t'aider<br>à <em>apprendre</em> aujourd'hui ?</h1><p>Pose une question, ajoute un cours ou choisis une façon de travailler avec ton support.</p><div class="prompt-grid"><button data-prompt="Explique-moi cette leçon simplement"><span>⌁</span><b>Explique cette leçon</b><small>Comprendre à ton rythme</small></button><button data-prompt="Résume mon cours en points essentiels"><span>≡</span><b>Résumer mon cours</b><small>Aller à l'essentiel</small></button><button data-prompt="Crée-moi des exercices pour m'entraîner"><span>✎</span><b>Me donner des exercices</b><small>Pratiquer et progresser</small></button><button data-prompt="Aide-moi à préparer mon examen"><span>◉</span><b>Préparer mon examen</b><small>Réviser avec méthode</small></button></div></section>
+    </div>
+    <div class="composer-zone">
+      <div class="file-preview" id="filePreview" hidden><span id="fileIcon">▧</span><img id="fileThumbnail" alt="" hidden><div><b id="fileName"></b><small id="fileInfo">Support prêt à être utilisé</small></div><button id="removeFile" type="button" aria-label="Annuler l’utilisation de ce support" title="Annuler l’utilisation de ce support"><span>×</span> Annuler</button></div>
+      <p class="upload-notice" id="uploadNotice" role="alert" hidden></p>
+      <div class="action-picker" id="actionPicker" hidden><div class="picker-title"><span>✦</span><div><b>Que veux-tu faire avec ce support ?</b><small>Choisis un mode pour personnaliser la réponse.</small></div></div><div class="action-grid"><button data-action="Résumé" data-desc="Un aperçu clair des idées essentielles."><span>≡</span><b>Résumé</b><small>Les idées essentielles</small></button><button data-action="Explication" data-desc="Une explication simple et adaptée à ton niveau."><span>⌁</span><b>Explication</b><small>Comprendre simplement</small></button><button data-action="Exercice" data-desc="Des exercices pour t'entraîner sur le cours."><span>✎</span><b>Exercice</b><small>Pratiquer à ton rythme</small></button><button data-action="Contrôle" data-desc="Un mini-quiz pour tester ta compréhension."><span>◉</span><b>Contrôle</b><small>Évaluer tes acquis</small></button></div></div>
+      <div class="composer-wrap">
+        <div class="attachment-wrap"><button class="attach-btn" id="attachBtn" aria-label="Ajouter un support" aria-expanded="false">＋</button><div class="attachment-menu" id="attachmentMenu" hidden><button data-type="pdf"><span>▧</span><div><b>PDF</b><small>Importer un cours ou document</small></div></button><button data-type="image"><span>▧</span><div><b>Image</b><small>Photo ou capture de ton cours</small></div></button></div></div>
+        <textarea id="messageInput" rows="1" placeholder="Pose n’importe quelle question sur ton cours…" aria-label="Ton message"></textarea>
+        <button class="send-btn" id="sendBtn" disabled aria-label="Envoyer le message">↑</button>
+      </div>
+      <p class="composer-hint">↵ pour envoyer <span>·</span> ⇧ ↵ pour aller à la ligne</p>
+    </div>
+  </section>
+</main>
+<input id="pdfInput" type="file" accept=".pdf,application/pdf" hidden><input id="imageInput" type="file" accept=".png,.jpg,.jpeg,.webp,image/png,image/jpeg,image/webp" hidden>
+<script type="module" src="assistant.js"></script>
+<script type="module" src="app-auth.js"></script>
+</body></html>

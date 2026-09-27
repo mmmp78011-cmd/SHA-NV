@@ -1,0 +1,2 @@
+[functions.upload-student-file]
+verify_jwt = false

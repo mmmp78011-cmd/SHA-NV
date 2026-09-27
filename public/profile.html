@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="description" content="Complète ton profil School Helping AI.">
+  <title>Complète ton profil — School Helping AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body class="auth-page">
+  <div class="noise"></div>
+  <header class="auth-header">
+    <a class="brand" href="index.html" aria-label="Accueil de School Helping AI"><span class="brand-mark"><i></i><i></i><i></i></span><span>School Helping <b>AI</b></span></a>
+    <button class="profile-logout" id="logoutButton" type="button">Déconnexion</button>
+  </header>
+  <main class="profile-main">
+    <section class="auth-card profile-card" aria-labelledby="profile-title">
+      <div class="auth-card-mark">✦</div>
+      <div class="auth-copy">
+        <p class="eyebrow">ENCORE UNE ÉTAPE</p>
+        <h1 id="profile-title">Complète ton profil</h1>
+        <p>Ces informations nous aident à adapter ton expérience d’apprentissage. Tu pourras les modifier plus tard.</p>
+      </div>
+      <p id="form-message" class="form-message" role="alert" aria-live="polite" hidden></p>
+      <form id="profile-form" novalidate>
+        <div class="profile-grid">
+          <div class="field"><label for="firstName">Prénom</label><input id="firstName" autocomplete="given-name" required></div>
+          <div class="field"><label for="lastName">Nom</label><input id="lastName" autocomplete="family-name" required></div>
+        </div>
+        <div class="field"><label for="age">Âge</label><input id="age" type="number" min="5" max="120" inputmode="numeric" required></div>
+        <div class="field"><label for="fieldOfStudy">Domaine d’études</label>
+          <select id="fieldOfStudy" required>
+            <option value="">Choisis ton domaine</option><option>Sciences</option><option>Sciences Mathématiques</option><option>Sciences Physiques</option><option>SVT</option><option>Économie</option><option>Gestion</option><option>Lettres</option><option>Informatique</option><option>Ingénierie</option><option>Droit</option><option>Médecine</option><option>Commerce</option><option>Tourisme / Hôtellerie</option><option value="other">Autre</option>
+          </select>
+        </div>
+        <div class="field" id="otherFieldWrap" hidden><label for="otherField">Ton domaine</label><input id="otherField" maxlength="80"></div>
+        <div class="field"><label for="schoolName">Nom de l’établissement</label><input id="schoolName" autocomplete="organization" required></div>
+        <div class="field"><label for="schoolLevel">Niveau scolaire</label>
+          <select id="schoolLevel" required>
+            <option value="">Choisis ton niveau</option><option>Collège</option><option>Tronc commun</option><option>1ère année lycée</option><option>2ème année lycée</option><option>1ère année Bac</option><option>Terminale / 2ème année Bac</option><option>Bac</option><option>Bac +1</option><option>Bac +2</option><option>Bac +3</option><option>Bac +4</option><option>Bac +5</option><option>Master</option><option>Doctorat</option><option value="other">Autre</option>
+          </select>
+        </div>
+        <div class="field" id="otherLevelWrap" hidden><label for="otherLevel">Ton niveau</label><input id="otherLevel" maxlength="80"></div>
+        <button class="auth-submit button" type="submit" id="saveButton"><span id="saveLabel">Continuer vers mon assistant</span><span class="spinner" hidden></span></button>
+      </form>
+    </section>
+  </main>
+  <script type="module" src="profile.js"></script>
+</body>
+</html>

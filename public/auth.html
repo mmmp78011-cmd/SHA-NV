@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="description" content="Connecte-toi à School Helping AI.">
+  <title>Connexion — School Helping AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body class="auth-page">
+  <div class="noise"></div>
+  <header class="auth-header">
+    <a class="brand" href="index.html" aria-label="Accueil de School Helping AI">
+      <span class="brand-mark"><i></i><i></i><i></i></span><span>School Helping <b>AI</b></span>
+    </a>
+    <a class="auth-back" href="index.html">← Retour à l’accueil</a>
+  </header>
+
+  <main class="auth-main">
+    <section class="auth-intro" aria-hidden="true">
+      <div class="eyebrow"><span class="pulse"></span> TON ESPACE D’APPRENTISSAGE PERSONNEL</div>
+      <h1>Apprends avec<br><em>confiance.</em></h1>
+      <p>Un espace pour comprendre tes cours, apprendre à ton rythme et te rapprocher de tes objectifs.</p>
+      <div class="auth-benefits">
+        <span>✦ Des explications personnalisées</span>
+        <span>✦ Tes cours toujours contextualisés</span>
+        <span>✦ Progresse à ton rythme</span>
+      </div>
+    </section>
+
+    <section class="auth-card" aria-labelledby="auth-title">
+      <div class="auth-card-mark">✦</div>
+      <div class="auth-copy">
+        <p class="eyebrow" id="form-eyebrow">BIENVENUE SUR SCHOOL HELPING AI</p>
+        <h2 id="auth-title">Ravi de te revoir</h2>
+        <p id="auth-subtitle">Connecte-toi pour reprendre ton apprentissage.</p>
+      </div>
+
+      <p id="form-message" class="form-message" role="alert" aria-live="polite" hidden></p>
+
+      <form id="auth-form" novalidate>
+        <div class="field full-name-field" hidden>
+          <label for="fullName">Nom complet</label>
+          <input id="fullName" name="fullName" type="text" autocomplete="name" placeholder="Ton nom complet">
+        </div>
+        <div class="field">
+          <label for="email">Adresse e-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="toi@exemple.com" required>
+        </div>
+        <div class="field">
+          <label for="password">Mot de passe</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" placeholder="8 caractères minimum" required>
+        </div>
+        <div class="field confirm-password-field" hidden>
+          <label for="confirmPassword">Confirme ton mot de passe</label>
+          <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" placeholder="Saisis à nouveau ton mot de passe">
+        </div>
+        <button class="auth-submit button" type="submit" id="submit-button">
+          <span id="submit-label">Se connecter</span><span class="spinner" hidden aria-hidden="true"></span>
+        </button>
+      </form>
+
+      <p class="auth-switch" id="auth-switch">Tu n’as pas de compte ? <button type="button" id="switch-mode">Créer un compte</button></p>
+    </section>
+  </main>
+  <script type="module" src="auth.js"></script>
+</body>
+</html>
